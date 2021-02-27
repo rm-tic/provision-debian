@@ -1,0 +1,110 @@
+---
+- name: Include Task repo.yml
+  include: add_repo.yml
+
+- name: Include Task latest.yml
+  include: url_deb_latest.yml
+
+- name: Update Repository
+  apt:
+    update-cache: yes
+  tags: apt_update
+
+- name: Install Packages .deb from URL
+  apt:
+    deb: "{{ item }}"
+    state: present
+  loop: "{{ pkgs_urls }}"
+  tags: pkgs_install
+
+- name: Install Packages from Repository
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pkgs }}"
+  tags: pkgs_install
+
+- name: Check Docker-CE is Installed
+  shell: >
+    [ "$(dpkg-query -W -f='${db:Status-Abbrev}' docker-ce 2>/dev/null | cut -c1-2)" = "ii" ] ; echo "$?"
+  args:
+    executable: /bin/bash
+  register: docker_is_installed
+  tags: docker
+
+- name: Install Docker
+  shell: >
+    curl -fsSL https://get.docker.com | bash -
+  args:
+    executable: /bin/bash
+    warn: no
+  when: docker_is_installed.stdout != 0
+  tags: docker
+
+- name: Install Oh My Zsh!
+  shell: >
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  become: no
+  tags: zsh
+  
+- name: Change Default SHELL to ZSH
+  user:
+    name: "{{ ansible_env.SUDO_USER }}"
+    shell: /usr/bin/zsh
+  tags: zsh
+
+- name: Snap | Install Anki
+  snap:
+    name: anki-woodrow
+    state: present
+    channel: stable
+  tags: anki
+
+- name: Snap | Install VSCode
+  snap:
+    name: code
+    state: present
+    classic: yes
+  tags: code
+
+- name: Snap | Install Discord
+  snap:
+    name: discord
+    state: present
+    channel: stable
+  tags: discord
+
+- name: Snap | Install Enpass
+  snap:
+    name: enpass
+    state: present
+    channel: stable
+  tags: enpass
+
+- name: Snap | Install GIMP
+  snap:
+    name: gimp
+    state: present
+    channel: stable
+  tags: gimp
+
+- name: Snap | Install OBS Studio
+  snap:
+    name: obs-studio
+    state: present
+    channel: stable
+  tags: obs
+
+- name: Snap | Install Postman
+  snap:
+    name: postman
+    state: present
+    channel: stable
+  tags: postman
+
+- name: Snap | Install Typora
+  snap:
+    name: typora
+    state: present
+    channel: stable
+  tags: typora

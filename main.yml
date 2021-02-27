@@ -1,0 +1,7 @@
+---
+- hosts: local
+  become: yes
+
+  roles:
+    - { role: install, tags: ['role_install'] }
+    - { role: config, tags: ['role_config'] }

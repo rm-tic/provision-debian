@@ -1,0 +1,15 @@
+---
+
+- name: Get Autokey Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/autokey/autokey/releases/latest" | egrep -o 'https.*(common|gtk).*all.deb'
+  register: url_deb_autokey
+  args:
+    warn: false
+  
+- name: Get Balena Etcher Package Latest Version URL
+  shell: >-
+    curl -s "https://api.github.com/repos/balena-io/etcher/releases/latest" | egrep -o 'https.*amd64.deb'
+  register: url_deb_etcher
+  args:
+    warn: false
