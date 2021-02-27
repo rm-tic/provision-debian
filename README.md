@@ -1,12 +1,12 @@
-# Ansible Provision Workstation Ubuntu
+# Ansible Provision Workstation Debian
 
 <p align="center">
-  <img src="img/ubuntu_logo.png">
+  <img src="img/debian_logo.png">
 </p>
 
-#### Distro suportada: Ubuntu 20.04
+#### Distro suportada: Debian 11
 
-Esta receita provisiona uma estação de trabalho recém formatada com Ubuntu 20.04
+Esta receita provisiona uma estação de trabalho recém formatada com Debian 11
 
 - Instala diversos pacotes GUI/CLI
 - Arquivos de configuração customizados
@@ -19,8 +19,6 @@ Esta receita provisiona uma estação de trabalho recém formatada com Ubuntu 20
 **SHELL**
 ```bash
 #WGET
-wget -qO- https://raw.githubusercontent.com/rm-tic/provision-ubuntu/master/provision_ubuntu_init.sh | bash -
+wget -qO- https://raw.githubusercontent.com/rm-tic/provision-debian/master/provision_debian_init.sh | bash -
 
 ```
-
-
