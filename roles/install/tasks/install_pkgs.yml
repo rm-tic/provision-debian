@@ -5,6 +5,14 @@
 - name: Include Task latest.yml
   include: url_deb_latest.yml
 
+- name: Update /etc/apt/sources.list
+  copy:
+    src: sources.list
+    dest: /etc/apt
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Update Repository
   apt:
     update-cache: yes
@@ -53,58 +61,16 @@
     shell: /usr/bin/zsh
   tags: zsh
 
-- name: Snap | Install Anki
-  snap:
-    name: anki-woodrow
+- name: Add Flathub Flatpak Repository
+  flatpak_remote:
+    name: flathub
     state: present
-    channel: stable
-  tags: anki
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
 
-- name: Snap | Install VSCode
-  snap:
-    name: code
+- name: Flatpak | Install Flathub Packages
+  flatpak:
+    name: "{{ item }}"
     state: present
-    classic: yes
-  tags: code
-
-- name: Snap | Install Discord
-  snap:
-    name: discord
-    state: present
-    channel: stable
-  tags: discord
-
-- name: Snap | Install Enpass
-  snap:
-    name: enpass
-    state: present
-    channel: stable
-  tags: enpass
-
-- name: Snap | Install GIMP
-  snap:
-    name: gimp
-    state: present
-    channel: stable
-  tags: gimp
-
-- name: Snap | Install OBS Studio
-  snap:
-    name: obs-studio
-    state: present
-    channel: stable
-  tags: obs
-
-- name: Snap | Install Postman
-  snap:
-    name: postman
-    state: present
-    channel: stable
-  tags: postman
-
-- name: Snap | Install Typora
-  snap:
-    name: typora
-    state: present
-    channel: stable
-  tags: typora
+    method: system
+  with_items: "{{ flatpak_pkgs }}"

@@ -3,44 +3,55 @@
 
 apt_key_urls:
   - https://dl.google.com/linux/linux_signing_key.pub #GoogleChrome
-  - https://www.virtualbox.org/download/oracle_vbox_2016.asc #VirtualBox
- 
+  - https://apt.enpass.io/keys/enpass-linux.key
+
 apt_repo_urls:
   - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main #GoogleChrome
     filename: google-chrome
-  - url: deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib #VirtualBox
-    filename: virtualbox
+  - url: deb https://apt.enpass.io/ stable main #Enpass
+    filename: enpass
 
 pkgs_urls:
-  - "{{ url_deb_autokey.stdout_lines[0] }}" #AutoKey
-  - "{{ url_deb_autokey.stdout_lines[1] }}" #AutoKey
   - "{{ url_deb_etcher.stdout }}" #BalenaEtcher
   - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb #TeamViewer
-  - https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb #Vagrant
-  - https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/10161/wps-office_11.1.0.10161.XA_amd64.deb #WPS Office 2019
 
 pkgs:
+  - autokey-common
+  - autokey-gtk
   - build-essential
-  - calibre
-  - celluloid
   - curl
-  - gnome-tweaks
+  - enpass
+  - flatpak
+  - gimp
+  - gnome-software-plugin-flatpak
   - google-chrome-stable
   - gparted
   - handbrake
   - htop
   - imagemagick
   - jq
+  - linux-headers-amd64
   - openssh-server
   - p7zip-full
   - p7zip-rar
   - peek
   - qbittorrent
   - scrcpy
-  - steam
   - tmux
   - uget
+  - vagrant
   - vim
-  - virtualbox-6.1
   - xclip
-  - zsh
+  - youtube-dl
+
+flapak_pkgs:
+  - net.ankiweb.Anki
+  - com.calibre_ebook.calibre
+  - io.github.celluloid_player.Celluloid
+  - com.visualstudio.code
+  - com.discordapp.Discord
+  - com.wps.Office
+  - com.getpostman.Postman
+  - com.obsproject.Studio
+  - com.valvesoftware.Steam
+  - io.typora.Typora
