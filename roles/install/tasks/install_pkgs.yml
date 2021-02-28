@@ -42,10 +42,9 @@
   tags: zsh
 
 - name: Install Oh My ZSH!
-  script: install.sh --unattended
+  script: /tmp/install.sh --unattended
   args:
     executable: /usr/bin/sh
-    chdir: /tmp
   become: no
   tags: zsh
 
