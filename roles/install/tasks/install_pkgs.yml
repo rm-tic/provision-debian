@@ -33,18 +33,9 @@
   loop: "{{ pkgs }}"
   tags: pkgs_install
 
-- name: Download Oh My ZSH! Install Script
-  get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install.sh
-    mode: '0755'
-  become_user: "{{ ansible_env.SUDO_USER }}"
-  tags: zsh
-
-- name: Install Oh My ZSH!
-  script: /tmp/install.sh --unattended
-  args:
-    executable: /usr/bin/sh
+- name: Install Oh My Zsh!
+  shell: >
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   become_user: "{{ ansible_env.SUDO_USER }}"
   tags: zsh
 
