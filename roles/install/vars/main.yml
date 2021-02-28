@@ -10,7 +10,7 @@ remove_pkgs:
   - gnome-music
   - gnome-weather
   - libreoffice*
-  - malcontent*
+  - malcontent
   - transmission*
 
 apt_key_urls:
