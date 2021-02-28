@@ -1,4 +1,5 @@
 ---
+
 - name: Include Task repo.yml
   include: add_repo.yml
 
@@ -32,29 +33,12 @@
   loop: "{{ pkgs }}"
   tags: pkgs_install
 
-- name: Check Docker-CE is Installed
-  shell: >
-    [ "$(dpkg-query -W -f='${db:Status-Abbrev}' docker-ce 2>/dev/null | cut -c1-2)" = "ii" ] ; echo "$?"
-  args:
-    executable: /bin/bash
-  register: docker_is_installed
-  tags: docker
-
-- name: Install Docker
-  shell: >
-    curl -fsSL https://get.docker.com | bash -
-  args:
-    executable: /bin/bash
-    warn: no
-  when: docker_is_installed.stdout != 0
-  tags: docker
-
 - name: Install Oh My Zsh!
   shell: >
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   become: no
   tags: zsh
-  
+
 - name: Change Default SHELL to ZSH
   user:
     name: "{{ ansible_env.SUDO_USER }}"

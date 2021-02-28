@@ -32,6 +32,7 @@ pkgs:
   - autokey-gtk
   - build-essential
   - curl
+  - docker.io
   - enpass
   - flatpak
   - gimp
