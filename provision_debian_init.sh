@@ -166,7 +166,7 @@ function EXEC_ANSIBLE()
    echo
    echo "Starting Playbook..."
    echo
-   ansible-playbook -i "$REPO_DIR/hosts" "$REPO_DIR/main.yml" -t zsh
+   ansible-playbook -i "$REPO_DIR/hosts" "$REPO_DIR/main.yml"
 }
 
 function MAIN()
