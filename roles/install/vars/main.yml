@@ -1,6 +1,18 @@
 ---
 # vars file for install
 
+remove_pkgs:
+  - evolution*
+  - gnome-calendar
+  - gnome-contacts
+  - gnome-games
+  - gnome-maps
+  - gnome-music
+  - gnome-weather
+  - libreoffice*
+  - malcontent*
+  - transmission*
+
 apt_key_urls:
   - https://dl.google.com/linux/linux_signing_key.pub #GoogleChrome
   - https://apt.enpass.io/keys/enpass-linux.key
