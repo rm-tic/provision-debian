@@ -58,7 +58,7 @@ pkgs:
   - youtube-dl
   - zsh
 
-flapak_pkgs:
+flatpak_pkgs:
   - net.ankiweb.Anki
   - com.calibre_ebook.calibre
   - io.github.celluloid_player.Celluloid
