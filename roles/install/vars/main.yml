@@ -33,6 +33,7 @@ pkgs:
   - build-essential
   - curl
   - docker.io
+  - docker-compose
   - enpass
   - flatpak
   - gimp
