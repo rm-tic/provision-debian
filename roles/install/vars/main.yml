@@ -32,6 +32,7 @@ pkgs:
   - autokey-gtk
   - build-essential
   - curl
+  - deborphan
   - docker.io
   - docker-compose
   - enpass
