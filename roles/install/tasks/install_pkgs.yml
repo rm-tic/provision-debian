@@ -38,14 +38,14 @@
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     dest: /tmp/install.sh
     mode: '0755'
-  become: no
+  become_user: "{{ ansible_env.SUDO_USER }}"
   tags: zsh
 
 - name: Install Oh My ZSH!
   script: /tmp/install.sh --unattended
   args:
     executable: /usr/bin/sh
-  become: no
+  become_user: "{{ ansible_env.SUDO_USER }}"
   tags: zsh
 
 - name: Change Default SHELL to ZSH
