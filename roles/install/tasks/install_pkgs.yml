@@ -33,9 +33,20 @@
   loop: "{{ pkgs }}"
   tags: pkgs_install
 
+- name: Download Oh My ZSH! Install Script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install.sh
+    mode: '0644'
+  become: no
+  tags: zsh
+
 - name: Install Oh My Zsh!
   shell: >
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    sh install.sh --unattended
+  args:
+    executable: /bin/bash
+    chdir: /tmp
   become: no
   tags: zsh
 
