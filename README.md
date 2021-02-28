@@ -19,6 +19,6 @@ Esta receita provisiona uma estação de trabalho recém formatada com Debian 11
 **SHELL**
 ```bash
 #WGET
-wget -qO- https://raw.githubusercontent.com/rm-tic/provision-debian/master/provision_debian_init.sh | bash -
+wget -qO- https://raw.githubusercontent.com/rm-tic/provision-debian/master/provision_debian_init.sh | sudo bash -
 
 ```
