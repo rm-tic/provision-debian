@@ -37,15 +37,14 @@
   get_url:
     url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     dest: /tmp/install.sh
-    mode: '0644'
+    mode: '0755'
   become: no
   tags: zsh
 
-- name: Install Oh My Zsh!
-  shell: >
-    sh install.sh --unattended
+- name: Install Oh My ZSH!
+  script: install.sh --unattended
   args:
-    executable: /bin/bash
+    executable: /usr/bin/sh
     chdir: /tmp
   become: no
   tags: zsh
