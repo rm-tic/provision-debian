@@ -2,7 +2,7 @@
 # vars file for install
 
 remove_pkgs:
-  - evolution*
+  - evolution
   - gnome-calendar
   - gnome-contacts
   - gnome-games
