@@ -36,6 +36,7 @@ pkgs:
   - docker.io
   - docker-compose
   - enpass
+  - flameshot
   - flatpak
   - gimp
   - gnome-software-plugin-flatpak
