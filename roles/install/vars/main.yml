@@ -14,31 +14,30 @@ remove_pkgs:
   - transmission*
 
 apt_key_urls:
-  - https://dl.google.com/linux/linux_signing_key.pub #GoogleChrome
-  - https://apt.enpass.io/keys/enpass-linux.key
+  - https://apt.enpass.io/keys/enpass-linux.key # Enpass
+  - https://dl.google.com/linux/linux_signing_key.pub # GoogleChrome
+  - https://apt.releases.hashicorp.com/gpg # Hashicorp
 
 apt_repo_urls:
-  - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main #GoogleChrome
-    filename: google-chrome
-  - url: deb https://apt.enpass.io/ stable main #Enpass
+  - url: deb https://apt.enpass.io/ stable main # Enpass
     filename: enpass
+  - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main # GoogleChrome
+    filename: google-chrome
+  - url: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main # Hashicorp
+    filename: hashicorp
 
 pkgs_urls:
-  - "{{ url_deb_etcher.stdout }}" #BalenaEtcher
-  - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb #TeamViewer
+  - "{{ url_deb_etcher.stdout }}" # BalenaEtcher
+  - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb # TeamViewer
 
 pkgs:
-  - autokey-common
-  - autokey-gtk
   - build-essential
   - curl
   - deborphan
   - docker.io
   - docker-compose
   - enpass
-  - flameshot
   - flatpak
-  - gimp
   - gnome-software-plugin-flatpak
   - google-chrome-stable
   - gparted
@@ -58,7 +57,6 @@ pkgs:
   - vagrant
   - vim
   - xclip
-  - youtube-dl
   - zsh
 
 flatpak_pkgs:
@@ -66,9 +64,11 @@ flatpak_pkgs:
   - com.calibre_ebook.calibre
   - io.github.celluloid_player.Celluloid
   - com.visualstudio.code
+  - io.dbeaver.DBeaverCommunity
   - com.discordapp.Discord
-  - com.wps.Office
-  - com.getpostman.Postman
+  - org.flameshot.Flameshot
+  - org.gimp.GIMP
+  - org.onlyoffice.desktopeditors
   - com.obsproject.Studio
-  - com.valvesoftware.Steam
+  - com.getpostman.Postman
   - io.typora.Typora

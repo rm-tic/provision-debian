@@ -1,7 +1,11 @@
 ---
-- hosts: local
-  become: yes
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: true
+  become: true
 
   roles:
-    - { role: install, tags: ['role_install'] }
-    - { role: config, tags: ['role_config'] }
+  - role: install
+    tags: role_install
+  - role: config
+    tags: role_config

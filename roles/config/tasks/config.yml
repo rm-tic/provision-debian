@@ -31,19 +31,9 @@
     state: present
   become_user: "{{ ansible_env.SUDO_USER }}"
   loop: "{{ wallpaper }}"
-  
-- name: Create path /tmp/wps-fonts
-  file:
-    path: /tmp/wps-fonts
-    state: directory
-  tags: fonts
 
-- name: Extract wps-fonts.tar.gz
-  unarchive:
-    src: wps-fonts.tar.gz
-    dest: /tmp/wps-fonts
-  tags: fonts
-
-- name: Install WPS Fonts
-  script: /tmp/wps-fonts/install.sh
-  tags: fonts
+- name: Set vim as Default Editor
+  lineinfile:
+    path: /etc/environment
+    line: "EDITOR=vim"
+    state: present

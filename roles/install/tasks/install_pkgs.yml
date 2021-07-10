@@ -39,6 +39,12 @@
   become_user: "{{ ansible_env.SUDO_USER }}"
   tags: zsh
 
+- name: Install Powerlevel10k Theme
+  shell: >
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  tags: zsh
+
 - name: Change Default SHELL to ZSH
   user:
     name: "{{ ansible_env.SUDO_USER }}"
