@@ -16,15 +16,12 @@ remove_pkgs:
 apt_key_urls:
   - https://apt.enpass.io/keys/enpass-linux.key # Enpass
   - https://dl.google.com/linux/linux_signing_key.pub # GoogleChrome
-  - https://apt.releases.hashicorp.com/gpg # Hashicorp
 
 apt_repo_urls:
   - url: deb https://apt.enpass.io/ stable main # Enpass
     filename: enpass
   - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main # GoogleChrome
     filename: google-chrome
-  - url: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main # Hashicorp
-    filename: hashicorp
 
 pkgs_urls:
   - "{{ url_deb_etcher.stdout }}" # BalenaEtcher
@@ -54,7 +51,6 @@ pkgs:
   - scrcpy
   - tmux
   - uget
-  - vagrant
   - vim
   - xclip
   - zsh
