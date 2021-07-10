@@ -16,6 +16,14 @@
     mode: 0755
     state: directory
 
+- name: Create Fonts Directory
+  file:
+    path: "/home/{{ ansible_env.SUDO_USER }}/.fonts"
+    owner: "{{ ansible_env.SUDO_USER }}"
+    group: "{{ ansible_env.SUDO_USER }}"
+    mode: 0755
+    state: directory
+
 - name: Copy Pictures to ~/Imagens/Wallpapers
   copy:
     src: root.png
@@ -24,6 +32,15 @@
     group: "{{ ansible_env.SUDO_USER }}"
     mode: 0644
 
+- name: Download MesloLGS Fonts
+  get_url:
+    url: "{{ item }}"
+    dest: "/home/{{ ansible_env.SUDO_USER }}/.fonts"
+    owner: "{{ ansible_env.SUDO_USER }}"
+    group: "{{ ansible_env.SUDO_USER }}"
+    mode: 0644
+  loop: "{{ url_fonts }}"
+
 - name: Set Default Wallpaper
   dconf:
     key: "{{ item.key }}"
@@ -31,6 +48,10 @@
     state: present
   become_user: "{{ ansible_env.SUDO_USER }}"
   loop: "{{ wallpaper }}"
+
+- name: Load MesloLGS Fonts
+  shell: >
+    fc-cache -f "/home/{{ ansible_env.SUDO_USER }}/.fonts"
 
 - name: Set vim as Default Editor
   lineinfile:
