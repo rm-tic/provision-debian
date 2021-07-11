@@ -1,0 +1,7 @@
+[user]
+	name = Rodrigo Martins
+	email = rodrigomartins.tic@gmail.com
+[core]
+	editor = vim
+[alias]
+	lg = log --abbrev-commit --graph --date=format:\"%Y-%m-%d %H:%M %z\"

@@ -4,26 +4,6 @@
 # E-mail: rodrigomartins.tic@gmail.com
 
 
-function gterm_load(){
-  GTERM_DIR="$HOME/.gterm"
-  GTERM_FILE="$GTERM_DIR/gterm-profile.dconf"
-  GTERM_RC="$GTERM_DIR/gterm.rc"
-  GTERM_URL="https://raw.githubusercontent.com/rm-tic/provision-debian/main/gterm-profile.dconf"
-
-
-  if [[ ! -d $GTERM_DIR  || "$(cat $GTERM_RC)" != "0" ]]; then
-    mkdir $GTERM_DIR
-    echo "0" > $GTERM_RC
-    wget -qO $GTERM_FILE $GTERM_URL
-
-    # DCONF Export
-    #dconf dump /org/gnome/terminal/legacy/profiles:/ > $GTERM_FILE
-
-    # DCONF Import
-    dconf load /org/gnome/terminal/legacy/profiles:/ < $GTERM_FILE
-  fi
-}
-
 function packages_status(){
   PACKAGE="$1"
   PACKAGE_STATUS="$(dpkg-query -W -f='${db:Status-Abbrev}' $PACKAGE 2> /dev/null | cut -c 1-2)"
@@ -134,7 +114,6 @@ function main(){
   echo
 
   # Load Functions
-  gterm_load
   packages_setup
   github_clone_repo
   python_venv_create

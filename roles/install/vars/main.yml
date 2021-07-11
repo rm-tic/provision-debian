@@ -14,10 +14,13 @@ remove_pkgs:
   - transmission*
 
 apt_key_urls:
+  - https://download.docker.com/linux/debian/gpg # Docker
   - https://apt.enpass.io/keys/enpass-linux.key # Enpass
   - https://dl.google.com/linux/linux_signing_key.pub # GoogleChrome
 
 apt_repo_urls:
+  - url: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable # Docker
+    filename: docker
   - url: deb https://apt.enpass.io/ stable main # Enpass
     filename: enpass
   - url: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main # GoogleChrome
@@ -28,19 +31,25 @@ pkgs_urls:
   - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb # TeamViewer
 
 pkgs:
+  - apt-transport-https
   - build-essential
+  - ca-certificates
+  - containerd.io
   - curl
   - deborphan
-  - docker.io
+  - docker-ce
+  - docker-ce-cli
   - docker-compose
   - enpass
   - flatpak
   - gnome-software-plugin-flatpak
   - google-chrome-stable
   - gparted
+  - gnupg
   - handbrake
   - htop
   - imagemagick
+  - lm-sensors
   - jq
   - linux-headers-amd64
   - openssh-server
