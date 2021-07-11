@@ -34,8 +34,8 @@
 
 - name: Download MesloLGS Fonts
   get_url:
-    url: "{{ item }}"
-    dest: "/home/{{ ansible_env.SUDO_USER }}/.fonts"
+    url: "{{ item.url }}"
+    dest: "/home/{{ ansible_env.SUDO_USER }}/.fonts/{{ item.name }}"
     owner: "{{ ansible_env.SUDO_USER }}"
     group: "{{ ansible_env.SUDO_USER }}"
     mode: 0644
