@@ -29,6 +29,7 @@ apt_repo_urls:
 pkgs_urls:
   - "{{ url_deb_etcher.stdout }}" # BalenaEtcher
   - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb # TeamViewer
+  - https://github.com/Ulauncher/Ulauncher/releases/download/5.11.0/ulauncher_5.11.0_all.deb # Ulauncher
 
 pkgs:
   - apt-transport-https
@@ -59,6 +60,7 @@ pkgs:
   - qbittorrent
   - scrcpy
   - tmux
+  - tree
   - uget
   - vim
   - xclip
