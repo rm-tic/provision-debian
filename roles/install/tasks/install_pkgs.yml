@@ -19,6 +19,21 @@
     update-cache: yes
   tags: apt_update
 
+- name: Check Docker Installed
+  shell: >
+    type -P docker &>/dev/null && echo OK || echo NOK
+  args:
+    executable: /bin/bash
+  register: docker
+
+- name: Install Docker
+  shell: >
+    curl -fsSL https://get.docker.com | bash -
+  args:
+    executable: /bin/bash
+    warn: no
+  when: docker.stdout == "NOK"
+
 - name: Install Packages .deb from URL
   apt:
     deb: "{{ item }}"
