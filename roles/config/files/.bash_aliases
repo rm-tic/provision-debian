@@ -22,7 +22,7 @@ alias pbpaste='xclip -selection clipboard -o' #Depends xclip package
 alias ssh='ssh -o ServerAliveInterval=15'
 alias crontab='VISUAL=vi crontab'
 alias git='LANG="en_US" git'
-alias get-ip='dig @8.8.8.8 +short'
+alias get-ip='dig @8.8.8.8'
 alias get-public-ip='curl ifconfig.so'
 
 # FUNCTIONS
