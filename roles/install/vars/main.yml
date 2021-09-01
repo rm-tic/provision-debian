@@ -49,6 +49,7 @@ pkgs:
   - imagemagick
   - lm-sensors
   - jq
+  - network-manager-openvpn-gnome
   - openssh-server
   - p7zip-full
   - p7zip-rar
